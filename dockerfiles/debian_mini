@@ -2,11 +2,9 @@ FROM --platform=i386 alpine:latest
 RUN apk update && apk upgrade
 RUN apk add --no-cache \
 	bash vim unzip ruby nodejs npm \
-	fakeroot dbus file man-pages \
-	lua5.4 luajit make curl less \
-	netcat-openbsd coreutils patch \
-	dialog util-linux wamerican \
-	shadow grep sed findutils \
+	dbus file lua5.4 luajit make curl less \
+	netcat-openbsd coreutils patch dialog \
+	util-linux shadow grep sed findutils \
 	cowsay
 RUN useradd -m user && echo "user:password" | chpasswd
 COPY --chown=user:user ./examples /home/user/examples
