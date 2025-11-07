@@ -7,7 +7,7 @@ export const printIntro = true;
 // Is a graphical display needed
 export const needsDisplay = false;
 // Executable full path (Required)
-export const cmd = "/sbin/init";
+export const cmd = "/bin/bash";
 // Arguments, as an array (Required)
 export const args = [];
 // Optional extra parameters
