@@ -1,15 +1,12 @@
 FROM docker.io/i386/alpine:3.17
-# Install required packages
-
 RUN echo -e "\n@testing https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
-RUN apk update && apk add alpine-base udev-init-scripts udev-init-scripts-openrc eudev bash
-# Setup the init script
-RUN rc-update add bootmisc boot && rc-update add udev sysinit && rc-update add udev-trigger sysinit && rc-update add udev-settle sysinit && rc-update add udev-postmount default
-# Add a user
-RUN adduser -D -s /bin/bash user && echo 'user:password' | chpasswd
-# Allow root login
-RUN echo 'root:password' | chpasswd
+RUN apk update && apk add --no-cache bash vim python3 nodejs gcc nano openssh shadow curl
 
-# terminal apps
-RUN apk add vim python3 nodejs gcc nano openssh
-CMD [ "/bin/sh" ]
+# Add user
+RUN useradd -m -s /bin/bash user && echo "user:password" | chpasswd && echo "root:password" | chpasswd
+# Switch to user by default (auto-login effect)
+USER user
+WORKDIR /home/user
+
+# Default command (starts a bash shell automatically)
+CMD ["/bin/bash"]
