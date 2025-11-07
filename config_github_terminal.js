@@ -7,13 +7,13 @@ export const printIntro = true;
 // Is a graphical display needed
 export const needsDisplay = false;
 // Executable full path (Required)
-export const cmd = "/bin/zsh";
+export const cmd = "/bin/bash";
 // Arguments, as an array (Required)
 export const args = [];
 // Optional extra parameters
 export const opts = {
 	// Environment variables
-	env: ENV, // Default: ["HOME=/home/user", "TERM=xterm", "USER=user", "SHELL=/bin/zsh", "EDITOR=nano", "LANG=en_US.UTF-8", "LC_ALL=C"],
+	env: ENV, // Default: ["HOME=/home/user", "TERM=xterm", "USER=user", "SHELL=/bin/bash", "EDITOR=nano", "LANG=en_US.UTF-8", "LC_ALL=C"],
 	// Current working directory
 	cwd: CWD, // Default: "/home/user",
 	// User id
