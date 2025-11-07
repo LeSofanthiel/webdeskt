@@ -14,8 +14,4 @@ RUN echo 'root:password' | chpasswd
 
 # terminal apps
 RUN apk add vim python3 nodejs gcc nano openssh
-
-# config folder
-COPY --chown=user:user ./config /home/user/.config
-
 CMD [ "/bin/sh" ]
