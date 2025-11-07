@@ -1,12 +1,19 @@
 FROM docker.io/i386/alpine:3.17
-RUN echo -e "\n@testing https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
-RUN apk update && apk add --no-cache bash vim python3 nodejs gcc nano openssh shadow curl
 
-# Add user
-RUN useradd -m -s /bin/bash user && echo "user:password" | chpasswd && echo "root:password" | chpasswd
-# Switch to user by default (auto-login effect)
+# Basic CLI tools
+RUN apk update && apk add --no-cache \
+    bash vim nano python3 nodejs gcc openssh shadow curl
+
+# Add a non-root user
+RUN useradd -m -s /bin/bash user && echo "user:password" | chpasswd && \
+    echo "root:password" | chpasswd
+
+# Set environment variables
+ENV HOME=/home/user TERM=xterm SHELL=/bin/bash USER=user
+
+# Switch to non-root user (auto-login effect)
 USER user
 WORKDIR /home/user
 
-# Default command (starts a bash shell automatically)
+# Start Bash directly
 CMD ["/bin/bash"]
