@@ -154,8 +154,8 @@
 		cx.setKmsCanvas(display, internalWidth, internalHeight);
 		// Compute the size to be used for AI screenshots
 		var screenshotMult = 1.0;
-		var maxWidth = 1366;
-		var maxHeight = 768;
+		var maxWidth = 1920;
+		var maxHeight = 1080;
 		if(internalWidth > maxWidth)
 			screenshotMult = maxWidth / internalWidth;
 		if(internalHeight > maxHeight)
