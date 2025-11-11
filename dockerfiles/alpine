@@ -5,7 +5,7 @@ RUN echo -e "\n@testing https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /
 #RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf
 # Package Time
 RUN apk update && apk add alpine-base bash nano
-RUN apk add fastfetch tmux
+RUN apk add fastfetch tmux cmatrix
 
 # Add a user
 RUN adduser -D -s /bin/bash user && echo 'user:password' | chpasswd
