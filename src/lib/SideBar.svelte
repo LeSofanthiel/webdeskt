@@ -6,8 +6,6 @@
 	import CpuTab from './CpuTab.svelte';
 	import DiskTab from './DiskTab.svelte';
 	import AnthropicTab from './AnthropicTab.svelte';
-	import PostsTab from './PostsTab.svelte';
-	import DiscordTab from './DiscordTab.svelte';
 	import GitHubTab from './GitHubTab.svelte';
 	import SmallButton from './SmallButton.svelte';
 	import { cpuActivity, diskActivity, aiActivity } from './activities.js';
@@ -18,8 +16,6 @@
 		{ icon: 'fas fa-compact-disc', info: 'Disk', activity: diskActivity },
 		{ icon: 'fas fa-robot', info: 'ClaudeAI', activity: aiActivity },
 		null,
-		{ icon: 'fas fa-book-open', info: 'Posts', activity: null },
-		{ icon: 'fab fa-discord', info: 'Discord', activity: null },
 		{ icon: 'fab fa-github', info: 'GitHub', activity: null },
 	];
 	let dispatch = createEventDispatcher();
@@ -109,10 +105,6 @@
 			<DiskTab on:reset/>
 		{:else if activeInfo === 'ClaudeAI'}
 			<AnthropicTab handleTool={handleTool} />
-		{:else if activeInfo === 'Posts'}
-			<PostsTab/>
-		{:else if activeInfo === 'Discord'}
-			<DiscordTab/>
 		{:else if activeInfo === 'GitHub'}
 			<GitHubTab/>
 		{:else}
