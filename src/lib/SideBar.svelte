@@ -1,6 +1,5 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
-	import Icon from './Icon.svelte';
 	import InformationTab from './InformationTab.svelte';
 	import NetworkingTab from './NetworkingTab.svelte';
 	import CpuTab from './CpuTab.svelte';
@@ -8,13 +7,11 @@
 	import AnthropicTab from './AnthropicTab.svelte';
 	import GitHubTab from './GitHubTab.svelte';
 	import SmallButton from './SmallButton.svelte';
-	import { cpuActivity, diskActivity, aiActivity } from './activities.js';
+	import { cpuActivity, diskActivity } from './activities.js';
 	const icons = [
-		{ icon: 'fas fa-info-circle', info: 'Information', activity: null },
 		{ icon: 'fas fa-wifi', info: 'Networking', activity: null },
 		{ icon: 'fas fa-microchip', info: 'CPU', activity: cpuActivity },
 		{ icon: 'fas fa-compact-disc', info: 'Disk', activity: diskActivity },
-		{ icon: 'fas fa-robot', info: 'ClaudeAI', activity: aiActivity },
 		null,
 		{ icon: 'fab fa-github', info: 'GitHub', activity: null },
 	];
@@ -103,8 +100,6 @@
 			<CpuTab/>
 		{:else if activeInfo === 'Disk'}
 			<DiskTab on:reset/>
-		{:else if activeInfo === 'ClaudeAI'}
-			<AnthropicTab handleTool={handleTool} />
 		{:else if activeInfo === 'GitHub'}
 			<GitHubTab/>
 		{:else}
